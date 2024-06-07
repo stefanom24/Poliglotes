@@ -1,12 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicios de Vocabulário</title>
-    <%- include('navbar'); -%>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicios de Vocabulário</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    
+    <header>
+    <%- include ('navbar'); -%>
+    </header>
+  <div class="container mt-4">
+    <h1 class="text-center">Exercícios de Vocabulário</h1>
+    <div id="quiz" class="mt-4">
+      <!-- Exercícios de múltipla escolha serão inseridos aqui -->
+    </div>
+    <button id="check-answers" class="btn btn-success mt-4">Verificar Respostas</button>
+    <div id="results" class="mt-4"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const vocab = [
+      { word: "Casa", meaning: "House" },
+      { word: "Cão", meaning: "Dog" },
+      { word: "Gato", meaning: "Cat" }
+    ];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function generateQuiz(vocab) {
+      const quizContainer = document.getElementById('quiz');
+      quizContainer.innerHTML = '';
+      const shuffledVocab = shuffle([...vocab]);
+
+      shuffledVocab.forEach((item, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.classList.add('mb-3');
+
+        const question = document.createElement('p');
+        question.textContent = `Qual é o significado de "${item.word}"?`;
+        questionDiv.appendChild(question);
+
+        const answers = shuffle(vocab.map(v => v.meaning));
+        answers.forEach(answer => {
+          const label = document.createElement('label');
+          label.classList.add('form-check-label');
+
+          const input = document.createElement('input');
+          input.type = 'radio';
+          input.name = `question-${index}`;
+          input.value = answer;
+          input.classList.add('form-check-input');
+
+          label.appendChild(input);
+          label.append(answer);
+
+          const div = document.createElement('div');
+          div.classList.add('form-check');
+          div.appendChild(label);
+
+          questionDiv.appendChild(div);
+        });
+
+        quizContainer.appendChild(questionDiv);
+      });
+    }
+
+    document.getElementById('check-answers').addEventListener('click', () => {
+      const resultsContainer = document.getElementById('results');
+      resultsContainer.innerHTML = '';
+      let correct = 0;
+      const questions = document.querySelectorAll('#quiz > div');
+
+      questions.forEach((questionDiv, index) => {
+        const selectedAnswer = questionDiv.querySelector('input[name="question-' + index + '"]:checked');
+        if (selectedAnswer && selectedAnswer.value === vocab[index].meaning) {
+          correct++;
+        }
+      });
+
+      const score = document.createElement('p');
+      score.textContent = `Você acertou ${correct} de ${vocab.length} perguntas.`;
+      resultsContainer.appendChild(score);
+    });
+
+    generateQuiz(vocab);
+  </script>
 </body>
 </html>
