@@ -3,10 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicios de Gramática</title>
-    <%- include('navbar'); -%>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/jquery/jquery-jvectormap-2.0.5/jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
+    <style>
+        .grammar-container {
+            margin-top: 100px;
+        }
+
+        .feedback {
+            display: none;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        .score {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    
+    <header>
+        <%- include('partials/navbar') %>
+    </header>
+    <main class="container grammar-container">
+        <h1 class="text-center">Exercícios de Gramática</h1>
+        <div id="grammar-quiz" class="mt-4">
+            <!-- Exercícios de gramática serão inseridos aqui -->
+        </div>
+        <button id="check-grammar-answers" class="btn btn-success mt-4">Verificar Respostas</button>
+        <div id="grammar-results" class="mt-4"></div>
+        <div class="score mt-4">Pontuação: <span id="score">0</span></div>
+    </main>
+    <footer>
+        <div class="container p-4">
+            <p>&copy; 2024 Aprenda Vocabulário. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        const grammarExercises = [
+            {
+                question: "Qual é a forma correta do verbo 'ir' no presente do indicativo para a terceira pessoa do singular?",
+                options: ["vai", "vão", "vamos", "vaiam"],
+                correct: "vai"
+            },
+            {
+                question: "Escolha a frase correta:",
+                options: ["Eu vou ir para casa.", "Eu vou a casa.", "Eu vou a casa.", "Eu vou casa."],
+                correct: "Eu vou a casa."
+            },
+            {
+                question: "Complete a frase: 'Ele ____ ao cinema ontem.'",
+                options: ["foi", "vai", "irá", "iria"],
+                correct: "foi"
+            }
+        ];
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function generateGrammarQuiz(exercises) {
+            const quizContainer = document.getElementById('grammar-quiz');
+            quizContainer.innerHTML = '';
+
+            exercises.forEach((exercise, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('mb-3');
+
+                const question = document.createElement('p');
+                question.textContent = exercise.question;
+                questionDiv.appendChild(question);
+
+                const answers = shuffle(exercise.options);
+                answers.forEach(answer => {
+                    const label = document.createElement('label');
+                    label.classList.add('form-check-label');
+
+                    const input = document.createElement('input');
+                    input.type = 'radio';
+                    input.name = `grammar-question-${index}`;
+                    input.value = answer;
+                    input.classList.add('form-check-input');
+
+                    label.appendChild(input);
+                    label.append(answer);
+
+                    const div = document.createElement('div');
+                    div.classList.add('form-check');
+                    div.appendChild(label);
+
+                    questionDiv.appendChild(div);
+                });
+
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        document.getElementById('check-grammar-answers').addEventListener('click', () => {
+            const resultsContainer = document.getElementById('grammar-results');
+            const scoreContainer = document.getElementById('score');
+            resultsContainer.innerHTML = '';
+            let correct = 0;
+            const questions = document.querySelectorAll('#grammar-quiz > div');
+
+            questions.forEach((questionDiv, index) => {
+                const selectedAnswer = questionDiv.querySelector('input[name="grammar-question-' + index + '"]:checked');
+                const feedback = document.createElement('p');
+                feedback.classList.add('feedback');
+                if (selectedAnswer && selectedAnswer.value === grammarExercises[index].correct) {
+                    correct++;
+                    feedback.classList.add('correct');
+                    feedback.textContent = "Correto!";
+                } else {
+                    feedback.classList.add('incorrect');
+                    feedback.textContent = `Incorreto! A resposta correta é: ${grammarExercises[index].correct}`;
+                }
+                questionDiv.appendChild(feedback);
+                feedback.style.display = 'block';
+            });
+
+            scoreContainer.textContent = correct;
+        });
+
+        generateGrammarQuiz(grammarExercises);
+    </script>
 </body>
 </html>

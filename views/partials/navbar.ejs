@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Poliglotês</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Exercícios
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/exercicios">Vocabulário</a></li>
+            <li><a class="dropdown-item" href="/exeGramatica">Gramática</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Conversação</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background-color: transparent;
+    border: none !important;
+    color: rgba(0, 0, 0, 0);
+  }
+
+  .navbar .nav-link {
+    color: white !important;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .navbar .nav-link:hover {
+    color: #f8d210 !important;
+  }
+
+  .navbar .navbar-brand {
+    color: #f8d210 !important;
+  }
+
+  .navbar .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    border: none;
+  }
+
+  .navbar .dropdown-item {
+    color: white !important;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+
+  .navbar .dropdown-item:hover {
+    background-color: #f8d210 !important;
+    color: black !important;
+  }
+
+  .navbar .form-control {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: none;
+    color: white !important;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+
+  .navbar .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    color: black !important;
+  }
+
+  .navbar .btn-outline-success {
+    border-color: #f8d210 !important;
+    color: #f8d210 !important;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+
+  .navbar .btn-outline-success:hover {
+    background-color: #f8d210 !important;
+    color: black !important;
+  }
+</style>
