@@ -72,11 +72,15 @@
       padding: px;
     }
 
+    custom-color {
+      color: #F7967E;
+    }
+
   </style>
 </head>
 <body>
 <header>
-    <!-- Aqui você incluiria o seu navbar -->
+    <%- include ('navbar'); -%>
 </header>
 <nav class="navbar navbar-inverse visible-xs">
   <div class="container-fluid">
@@ -102,7 +106,7 @@
 <div>
   <div>
     <h3 style="color: #F7967E; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"> Dashboard</h3>
-    <p style="color: black;">Bem-vindo, *Estudante*, ao seu Overview Poliglotês.</p>
+    <p style="color: black;">Bem-vindo, Bruno, ao seu Overview Poliglotês.</p>
   </div>
   <hr>
   <div class="container">
@@ -119,8 +123,9 @@
                 <h6 class="user-email">brunomax@gmail.com</h6>
               </div>
               <div class="about">
-                <h5>About</h5>
-                <p>Perfil ativo desde 2024. Atualizado há 1 hora atrás</p>
+                <h5 style="text-align: center; color: #F7967E;">About</h5>
+                <p style="margin-left: 15%;">Perfil ativo desde 2024.</p>
+                <p style="margin-left: 25%; color: grey; font-size: x-small;"> Atualizado há uma hora.</p>
               </div>
             </div>
           </div>
@@ -131,7 +136,7 @@
           <div class="card-body">
             <div class="row gutters">
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <h6 class="mb-2 text-primary">Personal Details</h6>
+                <h6 class="mb-2 text-primary custom-color">Personal Details</h6>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                 <div class="form-group">
@@ -228,7 +233,7 @@
       </div>
       <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body" style="color: conic-gradient(#FFB100 0% 30%);">
             <h4 class="card-title"  style="text-align: center;">Progresso de Conversação</h4>
             <div class="progress-circle" style="background: conic-gradient(#FFB100 0% 30%, lightgray 30% 100%);">
               <div class="inner-circle">
