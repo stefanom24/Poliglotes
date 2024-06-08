@@ -1,12 +1,12 @@
 const express = require('express');
+const path = require('path');  // Importação do módulo path
 const app = express();
-const fs = require('fs');
 
 // Deixando o node/express utilizar e ler arquivos html
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
-// Definindo pasta de bootstrap para ser utilizado
-app.use("/",express.static("./node_modules/bootstrap/dist/"));
+// Definindo pasta de arquivos estáticos
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
 
