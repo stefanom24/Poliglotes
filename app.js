@@ -6,7 +6,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 // Definindo pasta de arquivos estáticos
-app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
