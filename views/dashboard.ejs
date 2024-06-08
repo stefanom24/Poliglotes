@@ -45,36 +45,29 @@
       margin-bottom: 20px;
     }
     .progress-circle {
-      position: relative;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      margin: 10px auto;
-    }
-    .inner-circle {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .progress-text {
-      font-size: 14px;
-      font-weight: bold;
-    }
-    .well {
-      padding: px;
-    }
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
 
-    custom-color {
-      color: #F7967E;
-    }
+  .inner-circle {
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .progress-text {
+    font-size: 20px;
+    font-weight: bold;
+  }
 
   </style>
 </head>
@@ -209,10 +202,10 @@
     <hr>
     <div class="row">
       <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12" style="margin-left: 12%;">
-        <div class="card" style="background: linear-gradient(135deg, #2bd98850 0%, #88e9b21b 100%, rgba(151, 161, 231, 0.185) 50%, lightgray 100%);">
+        <div class="card" style="background: linear-gradient(135deg, #2bd98850 0%, #88e9b21b 100%);">
           <div class="card-body">
-            <h4 class="card-title" style="text-align: center; color: #2bd98841(69, 68, 68);">Progresso de Gramática</h4>
-            <div class="progress-circle" style="background: conic-gradient(#2BD988 0% 50%, rgba(218, 211, 211, 0) 100% 100%);">
+            <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Gramática</h4>
+            <div class="progress-circle" style="background: conic-gradient(#2BD988 0% 70%, lightgray 70% 100%); margin-left: 30%;">
               <div class="inner-circle">
                 <div class="progress-text">70%</div>
               </div>
@@ -221,10 +214,10 @@
         </div>
       </div>
       <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
-        <div class="card" style="background: linear-gradient(135deg, #0085c240 0%, #6a6ad31b 100%, rgba(151, 161, 231, 0.185) 50%, lightgray 100%);">
+        <div class="card" style="background: linear-gradient(135deg, #10709c67 0%, #2897c324 100%);">
           <div class="card-body">
-            <h4 class="card-title" style="text-align: center; color: rgb(69, 68, 68);">Progresso de Vocabulário</h4>
-            <div class="progress-circle" style="background: conic-gradient(#0084C2 0% 50%, rgba(218, 211, 211, 0) 100% 100%);">
+            <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Vocabulário</h4>
+            <div class="progress-circle" style="background: conic-gradient(#0084C2 0% 50%, lightgray 50% 100%);margin-left: 30%;">
               <div class="inner-circle">
                 <div class="progress-text">50%</div>
               </div>
@@ -233,10 +226,10 @@
         </div>
       </div>
       <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
-        <div class="card" style="background: linear-gradient(135deg, #ffb3001a 0%, #ffb3001b 100%, rgba(229, 181, 59, 0.185) 50%, lightgray 100%);">
+        <div class="card" style="background: linear-gradient(135deg, #e5bf0562 0%, #c8ba2445 100%);">
           <div class="card-body">
-            <h4 class="card-title" style="text-align: center; color: rgb(69, 68, 68);">Progresso de Conversação</h4>
-            <div class="progress-circle" style="background: conic-gradient(#feb303 0% 30%, rgba(218, 211, 211, 0) 100% 100%);">
+            <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Conversação</h4>
+            <div class="progress-circle" style="background: conic-gradient(#FEB303 0% 30%, lightgray 30% 100%);margin-left: 30%;">
               <div class="inner-circle">
                 <div class="progress-text">30%</div>
               </div>
@@ -244,6 +237,7 @@
           </div>
         </div>
       </div>
+    </div>
       
       
     
