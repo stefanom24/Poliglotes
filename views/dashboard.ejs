@@ -12,7 +12,7 @@
     body {
       margin: 0;
       color: black;
-      background: #eeecec59;
+      background: #f8f9fa;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
@@ -24,7 +24,7 @@
     }
 
     .main-content {
-      margin-top: 70px; /* Adjust based on the height of your navbar */
+      margin-top: 100px; /* Adjust based on the height of your navbar */
     }
 
     .user-profile {
@@ -40,9 +40,18 @@
 
     .card {
       border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       margin-bottom: 20px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-body {
+      padding: 20px;
     }
 
     .progress-circle {
@@ -53,6 +62,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
+      margin: auto;
     }
 
     .inner-circle {
@@ -69,6 +79,43 @@
       font-size: 20px;
       font-weight: bold;
     }
+
+    h3, h4 {
+      color: #343a40;
+    }
+
+    .custom-color {
+      color: #007bff;
+    }
+
+    .dashboard-header {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .about p, .card-title {
+      margin: 0;
+    }
+
+    .about p:last-child {
+      color: grey;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        background-color: rgba(0, 0, 0, 0.8) !important;
+      }
+
+      .progress-circle {
+        margin-bottom: 15px;
+      }
+
+      .dashboard-header {
+        text-align: left;
+        padding-left: 15px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -77,15 +124,24 @@
   </header>
   <main class="main-content">
     <div class="container-fluid dashboard">
-      <div class="card text-center"> <!-- Added text-center class to center the text -->
+      <div class="card text-center shadow-sm p-4 bg-white rounded">
         <div class="card-body">
-          <h3 style="color: #0084C2;">Dashboard</h3>
+          <img src="/images/dashboard-icon.png" alt="Dashboard Icon" class="mb-3" style="width: 80px;">
+          <h3 class="dashboard-header mb-3">Dashboard</h3>
+          <h5 class="text-muted mb-4">Your Personalized Learning Hub</h5>
           <p>Bem-vindo, Bruno, ao seu Overview Poliglotês.</p>
+          <hr class="my-4">
+          <p class="text-muted">Explore your progress, start new lessons, and track your achievements.</p>
+          <div class="d-flex justify-content-center mt-4">
+            <a href="/start-learning" class="btn btn-primary me-2">Start Learning</a>
+            <a href="/view-progress" class="btn btn-secondary">View Progress</a>
+          </div>
         </div>
       </div>
     </div>
+    
     <hr>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row gutters">
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
           <div class="card h-100">
@@ -100,8 +156,8 @@
                 </div>
                 <div class="about">
                   <h5 style="text-align: center; color: #0084C2;">About</h5>
-                  <p style="margin-left: 15%;">Perfil ativo desde 2024.</p>
-                  <p style="margin-left: 25%; color: grey; font-size: x-small;"> Atualizado há uma hora.</p>
+                  <p>Perfil ativo desde 2024.</p>
+                  <p>Atualizado há uma hora.</p>
                 </div>
               </div>
             </div>
@@ -112,7 +168,7 @@
             <div class="card-body">
               <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <h6 class="mb-2 text-primary custom-color">Personal Details</h6>
+                  <h6 class="mb-2 custom-color">Personal Details</h6>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="form-group">
@@ -120,7 +176,6 @@
                     <input type="text" class="form-control" id="fullName" value="Bruno Maxwell" readonly>
                   </div>
                 </div>                       
-                            
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="form-group">
                     <label for="eMail">Email</label>
@@ -142,7 +197,7 @@
               </div>
               <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <h6 class="mt-3 mb-2 text-primary">Address</h6>
+                  <h6 class="mt-3 mb-2 custom-color">Address</h6>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="form-group">
@@ -171,23 +226,23 @@
               </div>
               <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <div class="text-right">
-                    <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+                  <div class="d-flex justify-content-center mt-3">
+                    <button type="button" id="submit" name="submit" class="btn btn-secondary me-2">Cancel</button>
                     <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
                   </div>
                 </div>
-              </div>
+              </div>              
             </div>
           </div>
         </div>
       </div>
       <hr>
-      <div class="row">
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12" style="margin-left: 12%;">
+      <div class="row text-center">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
           <div class="card" style="background: linear-gradient(135deg, #2bd98850 0%, #88e9b21b 100%);">
             <div class="card-body">
-              <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Gramática</h4>
-              <div class="progress-circle" style="background: conic-gradient(#2BD988 0% 70%, lightgray 70% 100%); margin-left: 30%;">
+              <h4 class="card-title">Progresso de Gramática</h4>
+              <div class="progress-circle" style="background: conic-gradient(#2BD988 0% 70%, lightgray 70% 100%);">
                 <div class="inner-circle">
                   <div class="progress-text">70%</div>
                 </div>
@@ -195,11 +250,11 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
           <div class="card" style="background: linear-gradient(135deg, #10709c67 0%, #2897c324 100%);">
             <div class="card-body">
-              <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Vocabulário</h4>
-              <div class="progress-circle" style="background: conic-gradient(#0084C2 0% 50%, lightgray 50% 100%);margin-left: 30%;">
+              <h4 class="card-title">Progresso de Vocabulário</h4>
+              <div class="progress-circle" style="background: conic-gradient(#0084C2 0% 50%, lightgray 50% 100%);">
                 <div class="inner-circle">
                   <div class="progress-text">50%</div>
                 </div>
@@ -207,11 +262,11 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
           <div class="card" style="background: linear-gradient(135deg, #e5bf0562 0%, #c8ba2445 100%);">
             <div class="card-body">
-              <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Conversação</h4>
-              <div class="progress-circle" style="background: conic-gradient(#FEB303 0% 30%, lightgray 30% 100%);margin-left: 30%;">
+              <h4 class="card-title">Progresso de Conversação</h4>
+              <div class="progress-circle" style="background: conic-gradient(#FEB303 0% 30%, lightgray 30% 100%);">
                 <div class="inner-circle">
                   <div class="progress-text">30%</div>
                 </div>
