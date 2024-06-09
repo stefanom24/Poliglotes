@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');  // Importação do módulo path
+const bodyParser = require('body-parser');
 const app = express();
+
+app.use(bodyParser.json());
 
 // Deixando o node/express utilizar e ler arquivos html
 app.use(express.urlencoded({ extended: true }));
@@ -38,6 +41,27 @@ app.get('/exeGramatica', (req, res) => {
 // Roteando pagina exercicios vocabulario
 app.get('/exeVocab', (req, res) => {
     res.render('exeVocab');
+});
+
+app.get('/signup', (req, res) => {
+    res.render('signup');
+});
+
+app.post('/signup', (req, res) => {
+    const { username, email, password, plan } = req.body;
+    
+    // Add logic to create a user account
+    // For example, save the user details to a database
+    // Here, we'll just simulate success or failure
+
+    // Simulating user creation
+    const success = true; // Change this based on actual user creation logic
+
+    if (success) {
+        res.json({ success: true });
+    } else {
+        res.json({ success: false, message: 'Unable to create account. Please try again.' });
+    }
 });
 
 

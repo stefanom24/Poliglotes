@@ -34,17 +34,12 @@
             <li><a class="dropdown-item" href="#" onclick="setLanguage('fr')">Français</a></li>
           </ul>
         </li>
-        <!-- Notifications Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle position-relative d-flex align-items-center" href="#" id="notificationsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <!-- Notifications Icon -->
+        <li class="nav-item d-flex align-items-center notification">
+          <a class="nav-link position-relative" href="#" id="notifications" data-bs-toggle="modal" data-bs-target="#notificationsModal">
             <i class="bi bi-bell"></i>
-            <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">3</span>
+            <span class="badge bg-danger rounded-pill position-absolute" style="top: -5px; right: -10px;">3</span>
           </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
-            <li><a class="dropdown-item" href="#">Notification 1</a></li>
-            <li><a class="dropdown-item" href="#">Notification 2</a></li>
-            <li><a class="dropdown-item" href="#">Notification 3</a></li>
-          </ul>
         </li>
         <!-- User Authentication Links -->
         <li class="nav-item">
@@ -57,6 +52,28 @@
     </div>
   </div>
 </nav>
+
+<!-- Notifications Modal -->
+<div class="modal fade" id="notificationsModal" tabindex="-1" aria-labelledby="notificationsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="notificationsModalLabel">Notifications</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+          <li class="list-group-item">Notification 1</li>
+          <li class="list-group-item">Notification 2</li>
+          <li class="list-group-item">Notification 3</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   function setLanguage(lang) {
@@ -82,7 +99,15 @@
     position: absolute; /* Ensure absolute positioning */
     width: 100%;
     padding: 1.5rem 1rem !important; /* Increase padding to make navbar taller */
-    z-index: 3 !important; /* Ensure navbar is above video */
+    z-index: 4 !important; /* Ensure navbar is above video and modal backdrop */
+  }
+
+  .modal-backdrop.show {
+    z-index: 3; /* Ensure backdrop is behind the navbar */
+  }
+
+  .modal {
+    z-index: 5 !important; /* Ensure modal is above the navbar */
   }
 
   .navbar .nav-link {
@@ -128,11 +153,10 @@
     color: black !important;
   }
 
-  /* Additional styles for notifications */
   .badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: -5px; /* Adjust position */
+    right: -10px; /* Adjust position */
     border-radius: 50%;
   }
 
@@ -141,15 +165,17 @@
     align-items: center;
   }
 
+  .nav-item.notification {
+    margin-right: 1rem; /* Adjust the value as needed */
+  }
+
   .navbar .nav-link, .navbar .navbar-brand, .navbar .dropdown-item {
     transition: color 0.3s ease, background-color 0.3s ease;
   }
-  
+
   @media (max-width: 768px) {
     .navbar {
         background-color: rgba(0, 0, 0, 0.8) !important; /* Slightly less transparent on small screens */
     }
   }
 </style>
-
-
