@@ -4,151 +4,134 @@
   <title>Dashboard</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/jquery/jquery-jvectormap-2.0.5/jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/jquery/jquery-jvectormap-2.0.5/jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
- 
-  <style>
 
+  <style>
     body {
       margin: 0;
-      padding-top: 40px;
       color: black;
       background: #eeecec59;
-      position: relative;
-      height: 100%;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
-  h3{ 
-    margin-left: 10%;
-  }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
 
-  p{ 
-    margin-left: 10%;
-  }
+    .main-content {
+      margin-top: 70px; /* Adjust based on the height of your navbar */
+    }
 
-  .user-profile {
+    .user-profile {
       text-align: center;
       margin: 20px;
     }
+
     .user-avatar img {
       width: 100px;
       height: 100px;
       border-radius: 50%;
     }
+
     .card {
       border: 1px solid #ddd;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       margin-bottom: 20px;
     }
+
     .progress-circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
 
-  .inner-circle {
-    width: 80%;
-    height: 80%;
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .inner-circle {
+      width: 80%;
+      height: 80%;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  .progress-text {
-    font-size: 20px;
-    font-weight: bold;
-  }
-
+    .progress-text {
+      font-size: 20px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-<header>
-    <%- include('partials/navbar'); -%>
-</header>
-<nav class="navbar navbar-inverse visible-xs">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Estudante</a>
+  <header>
+      <%- include('partials/navbar'); %>
+  </header>
+  <main class="main-content">
+    <div class="container-fluid dashboard">
+      <div class="card text-center"> <!-- Added text-center class to center the text -->
+        <div class="card-body">
+          <h3 style="color: #0084C2;">Dashboard</h3>
+          <p>Bem-vindo, Bruno, ao seu Overview Poliglotês.</p>
+        </div>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Dashboard</a></li>
-        <li><a href="#">Exercicios de Vocabulário</a></li>
-        <li><a href="#">Exercicios de Gramática</a></li>
-        <li><a href="#">Praticar Conversação</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-    
-<div>
-  <div>
-    <h3 style="color: #0084C2; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"> Dashboard</h3>
-    <p style="color: black;">Bem-vindo, Bruno, ao seu Overview Poliglotês.</p>
-  </div>
-  <hr>
-  <div class="container">
-    <div class="row gutters">
-      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-        <div class="card h-100">
-          <div class="card-body">
-            <div class="account-settings">
-              <div class="user-profile">
-                <div class="user-avatar">
-                  <img src="/public/images/user.png" alt="user">
+    <hr>
+    <div class="container-fluid">
+      <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="account-settings">
+                <div class="user-profile">
+                  <div class="user-avatar">
+                    <img src="/public/images/user.png" alt="user">
+                  </div>
+                  <h5 class="user-name">Bruno Maxwell</h5>
+                  <h6 class="user-email">brunomax@gmail.com</h6>
                 </div>
-                <h5 class="user-name">Bruno Maxwell</h5>
-                <h6 class="user-email">brunomax@gmail.com</h6>
-              </div>
-              <div class="about">
-                <h5 style="text-align: center; color: #0084C2;">About</h5>
-                <p style="margin-left: 15%;">Perfil ativo desde 2024.</p>
-                <p style="margin-left: 25%; color: grey; font-size: x-small;"> Atualizado há uma hora.</p>
+                <div class="about">
+                  <h5 style="text-align: center; color: #0084C2;">About</h5>
+                  <p style="margin-left: 15%;">Perfil ativo desde 2024.</p>
+                  <p style="margin-left: 25%; color: grey; font-size: x-small;"> Atualizado há uma hora.</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-        <div class="card h-100">
-          <div class="card-body">
-            <div class="row gutters">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <h6 class="mb-2 text-primary custom-color">Personal Details</h6>
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                <div class="form-group">
-                  <label for="fullName">Full Name</label>
-                  <input type="text" class="form-control" id="fullName" value="Bruno Maxwell" readonly>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <h6 class="mb-2 text-primary custom-color">Personal Details</h6>
                 </div>
-              </div>                       
-                          
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                <div class="form-group">
-                  <label for="eMail">Email</label>
-                  <input type="email" class="form-control" id="eMail" value="brunomax@gmail.com" readonly>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" value="Bruno Maxwell" readonly>
+                  </div>
+                </div>                       
+                            
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="eMail">Email</label>
+                    <input type="email" class="form-control" id="eMail" value="brunomax@gmail.com" readonly>
+                  </div>
                 </div>
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                <div class="form-group">
-                  <label for="phone">Phone</label>
-                  <input type="text" class="form-control" id="phone" value="(11) 95124-3091" readonly>
-                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" value="(11) 95124-3091" readonly>
+                  </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="form-group">
@@ -198,48 +181,46 @@
           </div>
         </div>
       </div>
+      <hr>
+      <div class="row">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12" style="margin-left: 12%;">
+          <div class="card" style="background: linear-gradient(135deg, #2bd98850 0%, #88e9b21b 100%);">
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Gramática</h4>
+              <div class="progress-circle" style="background: conic-gradient(#2BD988 0% 70%, lightgray 70% 100%); margin-left: 30%;">
+                <div class="inner-circle">
+                  <div class="progress-text">70%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card" style="background: linear-gradient(135deg, #10709c67 0%, #2897c324 100%);">
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Vocabulário</h4>
+              <div class="progress-circle" style="background: conic-gradient(#0084C2 0% 50%, lightgray 50% 100%);margin-left: 30%;">
+                <div class="inner-circle">
+                  <div class="progress-text">50%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card" style="background: linear-gradient(135deg, #e5bf0562 0%, #c8ba2445 100%);">
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Conversação</h4>
+              <div class="progress-circle" style="background: conic-gradient(#FEB303 0% 30%, lightgray 30% 100%);margin-left: 30%;">
+                <div class="inner-circle">
+                  <div class="progress-text">30%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12" style="margin-left: 12%;">
-        <div class="card" style="background: linear-gradient(135deg, #2bd98850 0%, #88e9b21b 100%);">
-          <div class="card-body">
-            <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Gramática</h4>
-            <div class="progress-circle" style="background: conic-gradient(#2BD988 0% 70%, lightgray 70% 100%); margin-left: 30%;">
-              <div class="inner-circle">
-                <div class="progress-text">70%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
-        <div class="card" style="background: linear-gradient(135deg, #10709c67 0%, #2897c324 100%);">
-          <div class="card-body">
-            <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Vocabulário</h4>
-            <div class="progress-circle" style="background: conic-gradient(#0084C2 0% 50%, lightgray 50% 100%);margin-left: 30%;">
-              <div class="inner-circle">
-                <div class="progress-text">50%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
-        <div class="card" style="background: linear-gradient(135deg, #e5bf0562 0%, #c8ba2445 100%);">
-          <div class="card-body">
-            <h4 class="card-title" style="text-align: center; color: rgba(0, 0, 0, 0.73);">Progresso de Conversação</h4>
-            <div class="progress-circle" style="background: conic-gradient(#FEB303 0% 30%, lightgray 30% 100%);margin-left: 30%;">
-              <div class="inner-circle">
-                <div class="progress-text">30%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-      
-      
-    
-    
-
+  </main>
+</body>
+</html>
