@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "brand": "Poliglotês",
+    "home": "Accueil",
+    "dashboard": "Tableau de bord",
+    "exercises": "Exercices",
+    "vocabulary": "Vocabulaire",
+    "grammar": "Grammaire",
+    "conversation": "Conversation",
+    "language": "Langue",
+    "language.english": "Anglais",
+    "language.spanish": "Español",
+    "language.french": "Français",
+    "login": "Connecter",
+    "signup": "S’enregistrer",
+    "notifications": {
+      "title": "Notifications",
+      "item1": "Notification 1",
+      "item2": "Notification 2",
+      "item3": "Notification 3",
+      "close": "Fermer"
+    }
+  },
+  "page": {
+    "title": "Poliglotês"
+  },
+  "main": {
+    "videoOverlay": {
+      "ticket": "Votre billet pour le monde! 🌎",
+      "join": "Rejoignez-nous pour explorer et apprendre de nouvelles langues.",
+      "getStarted": "C'est parti"
+    },
+    "features": {
+      "learn": {
+        "title": "Apprenez",
+        "description": "Apprenez une nouvelle langue avec Poliglotês. Nous proposons un large choix de langues."
+      },
+      "travel": {
+        "title": "Supérieur",
+        "description": "Parcourez le monde avec Poliglotês. Nous offrons un large éventail de destinations parmi lesquelles choisir."
+      },
+      "explore": {
+        "title": "Explorez",
+        "description": "Explorez le monde avec Poliglotês. Nous offrons un large éventail d'expériences parmi lesquelles choisir."
+      }
+    },
+    "testimonials": {
+      "title": "Ce que nos utilisateurs disent",
+      "userA": "\"Poliglotês a complètement transformé mon expérience d'apprentissage des langues. Hautement recommandé!\"",
+      "userB": "\"Les conseils de voyage et les ressources linguistiques sont de premier ordre. Je me sens plus en confiance lorsque je voyage à l'étranger.\"",
+      "userC": "\"Une plateforme fantastique pour tous ceux qui cherchent à apprendre une nouvelle langue ou à améliorer leurs compétences.\""
+    },
+    "map": {
+      "globalVisitors": "Visiteurs globaux",
+      "lastUpdated": "Dernière mise à jour: il y a 7 jours",
+      "us": "États-Unis",
+      "brazil": "Brésil",
+      "russia": "Russia",
+      "australia": "Australie"
+    },
+    "aboutUs": {
+      "title": "À propos de nous",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae nunc nec nisl aliquet lacinia. Nulla facilisi. Nullam auctor, nisl id lacinia tincidunt, nunc nunc fringilla nunc, id tincidunt nunc nunc ac nunc. Nulla facilisi. Sed auctor, nunc id lacinia tincidunt, nunc nunc fringilla nunc, id tincidunt nunc nunc ac nunc."
+    },
+    "contactUs": {
+      "title": "Nous contacter",
+      "email": "E-mail: info@poliglotes.com",
+      "phone": "<strong>Téléphone:</strong> +123 456 7890"
+    },
+    "newsletter": {
+      "title": "Rester informé",
+      "description": "Subscribe to our newsletter to get the latest updates and news.",
+      "subscribe": "Subscribe"
+    }
+  },
+  "footer": {
+    "copyright": "&copy; 2024 Poliglotês. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  }
+}

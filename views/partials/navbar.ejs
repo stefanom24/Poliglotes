@@ -1,37 +1,36 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Poliglotês</a>
+    <a class="navbar-brand" href="/" data-i18n="nav.brand"><%= t('nav.brand', { defaultValue: 'Poliglotês' }) %></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/" id="nav-home">Home</a>
+          <a class="nav-link active" aria-current="page" href="/" id="nav-home" data-i18n="nav.home"><%= t('nav.home', { defaultValue: 'Home' }) %></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/dashboard" id="nav-dashboard">Dashboard</a>
+          <a class="nav-link" href="/dashboard" id="nav-dashboard" data-i18n="nav.dashboard"><%= t('nav.dashboard', { defaultValue: 'Dashboard' }) %></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span id="nav-exercises">Exercises</span>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.exercises">
+            <%= t('nav.exercises', { defaultValue: 'Exercises' }) %>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/exercicios" id="nav-vocabulary">Vocabulary</a></li>
-            <li><a class="dropdown-item" href="/exeGramatica" id="nav-grammar">Grammar</a></li>
-            <li><a class="dropdown-item" href="#" id="nav-conversation">Conversation</a></li>
+            <li><a class="dropdown-item" href="/exercicios" id="nav-vocabulary" data-i18n="nav.vocabulary"><%= t('nav.vocabulary', { defaultValue: 'Vocabulary' }) %></a></li>
+            <li><a class="dropdown-item" href="/exeGramatica" id="nav-grammar" data-i18n="nav.grammar"><%= t('nav.grammar', { defaultValue: 'Grammar' }) %></a></li>
+            <li><a class="dropdown-item" href="#" id="nav-conversation" data-i18n="nav.conversation"><%= t('nav.conversation', { defaultValue: 'Conversation' }) %></a></li>
           </ul>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Language
-          </a>
+          <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.language"><%= t('nav.language', { defaultValue: 'Language' }) %></a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-            <li><a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a></li>
-            <li><a class="dropdown-item" href="#" onclick="setLanguage('es')">Español</a></li>
-            <li><a class="dropdown-item" href="#" onclick="setLanguage('fr')">Français</a></li>
+            <li><a class="dropdown-item" href="?lng=en" data-i18n="nav.language.english"><%= t('nav.language.english', { defaultValue: 'English' }) %></a></li>
+            <li><a class="dropdown-item" href="?lng=es" data-i18n="nav.language.spanish"><%= t('nav.language.spanish', { defaultValue: 'Español' }) %></a></li>
+            <li><a class="dropdown-item" href="?lng=fr" data-i18n="nav.language.french"><%= t('nav.language.french', { defaultValue: 'Français' }) %></a></li>
+            <li><a class="dropdown-item" href="?lng=pt" data-i18n="nav.language.portuguese"><%= t('nav.language.portuguese', { defaultValue: 'Português' }) %></a></li>
           </ul>
         </li>
         <!-- Notifications Icon -->
@@ -43,10 +42,10 @@
         </li>
         <!-- User Authentication Links -->
         <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/login" data-i18n="nav.login"><%= t('nav.login', { defaultValue: 'Login' }) %></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/signup">Sign Up</a>
+          <a class="nav-link" href="/signup" data-i18n="nav.signup"><%= t('nav.signup', { defaultValue: 'Sign Up' }) %></a>
         </li>
       </ul>
     </div>
@@ -58,18 +57,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="notificationsModalLabel">Notifications</h5>
+        <h5 class="modal-title" id="notificationsModalLabel" data-i18n="nav.notifications.title"><%= t('nav.notifications.title', { defaultValue: 'Notifications' }) %></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <ul class="list-group">
-          <li class="list-group-item">Notification 1</li>
-          <li class="list-group-item">Notification 2</li>
-          <li class="list-group-item">Notification 3</li>
+          <li class="list-group-item" data-i18n="nav.notifications.item1"><%= t('nav.notifications.item1', { defaultValue: 'Notification 1' }) %></li>
+          <li class="list-group-item" data-i18n="nav.notifications.item2"><%= t('nav.notifications.item2', { defaultValue: 'Notification 2' }) %></li>
+          <li class="list-group-item" data-i18n="nav.notifications.item3"><%= t('nav.notifications.item3', { defaultValue: 'Notification 3' }) %></li>
         </ul>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="nav.notifications.close"><%= t('nav.notifications.close', { defaultValue: 'Close' }) %></button>
       </div>
     </div>
   </div>
@@ -77,15 +76,15 @@
 
 <script>
   function setLanguage(lang) {
-    fetch(`/languages/${lang}.json`)
+    fetch(`/languages/${lang}/en.json`)
       .then(response => response.json())
       .then(data => {
-        document.getElementById('nav-home').textContent = data.home;
-        document.getElementById('nav-dashboard').textContent = data.dashboard;
-        document.getElementById('nav-exercises').textContent = data.exercises;
-        document.getElementById('nav-vocabulary').textContent = data.vocabulary;
-        document.getElementById('nav-grammar').textContent = data.grammar;
-        document.getElementById('nav-conversation').textContent = data.conversation;
+        document.getElementById('nav-home').textContent = data['nav.home'] || 'Home';
+        document.getElementById('nav-dashboard').textContent = data['nav.dashboard'] || 'Dashboard';
+        document.getElementById('nav-exercises').textContent = data['nav.exercises'] || 'Exercises';
+        document.getElementById('nav-vocabulary').textContent = data['nav.vocabulary'] || 'Vocabulary';
+        document.getElementById('nav-grammar').textContent = data['nav.grammar'] || 'Grammar';
+        document.getElementById('nav-conversation').textContent = data['nav.conversation'] || 'Conversation';
       })
       .catch(error => console.error('Error loading language file:', error));
   }
