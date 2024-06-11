@@ -142,7 +142,7 @@
     
     <hr>
     <div class="container">
-      <div class="row gutters">
+      <div class="row">
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
           <div class="card h-100">
             <div class="card-body">
@@ -156,8 +156,8 @@
                 </div>
                 <div class="about">
                   <h5 style="text-align: center; color: #0084C2;">About</h5>
-                  <p>Perfil ativo desde 2024.</p>
-                  <p>Atualizado há uma hora.</p>
+                  <p style="margin-left: 44px;">Perfil ativo desde 2024.</p>
+                  <p style="margin-left: 46px;">Atualizado há uma hora.</p>
                 </div>
               </div>
             </div>
@@ -166,65 +166,65 @@
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
           <div class="card h-100">
             <div class="card-body">
-              <div class="row gutters">
+              <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <h6 class="mb-2 custom-color">Personal Details</h6>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group">
-                    <label for="fullName">Full Name</label>
+                  <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name</label>
                     <input type="text" class="form-control" id="fullName" value="Bruno Maxwell" readonly>
                   </div>
                 </div>                       
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group">
-                    <label for="eMail">Email</label>
+                  <div class="mb-3">
+                    <label for="eMail" class="form-label">Email</label>
                     <input type="email" class="form-control" id="eMail" value="brunomax@gmail.com" readonly>
                   </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group">
-                    <label for="phone">Phone</label>
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
                     <input type="text" class="form-control" id="phone" value="(11) 95124-3091" readonly>
                   </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group">
-                    <label for="website">Website URL</label>
+                  <div class="mb-3">
+                    <label for="website" class="form-label">Website URL</label>
                     <input type="url" class="form-control" id="website" value="None" readonly>
                   </div>
                 </div>
               </div>
-              <div class="row gutters">
+              <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <h6 class="mt-3 mb-2 custom-color">Address</h6>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group">
-                    <label for="Street">Address</label>
+                  <div class="mb-3">
+                    <label for="Street" class="form-label">Address</label>
                     <input type="text" class="form-control" id="Street" value="Rua das Pedrinhas" readonly>
                   </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group">
-                    <label for="ciTy">City</label>
+                  <div class="mb-3">
+                    <label for="ciTy" class="form-label">City</label>
                     <input type="text" class="form-control" id="ciTy" value="São Paulo" readonly>
                   </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group">
-                    <label for="sTate">State</label>
+                  <div class="mb-3">
+                    <label for="sTate" class="form-label">State</label>
                     <input type="text" class="form-control" id="sTate" value="São Paulo" readonly>
                   </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group">
-                    <label for="zIp">Zip Code</label>
+                  <div class="mb-3">
+                    <label for="zIp" class="form-label">Zip Code</label>
                     <input type="text" class="form-control" id="zIp" value="05428-1011" readonly>
                   </div>
                 </div>
               </div>
-              <div class="row gutters">
+              <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="d-flex justify-content-center mt-3">
                     <button type="button" id="submit" name="submit" class="btn btn-secondary me-2">Cancel</button>
@@ -278,5 +278,26 @@
     </div>
   </main>
   <script src="/main.js"></script>
+
+  <footer class="bg-dark text-white mt-5">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-6">
+                <p data-i18n="footer.copyright"><%= t('footer.copyright', { defaultValue: '&copy; 2024 Poliglotês. All rights reserved.' }) %></p>
+            </div>
+            <div class="col-md-6 text-end">
+                <a href="#" class="text-white me-2" data-i18n="footer.privacyPolicy"><%= t('footer.privacyPolicy', { defaultValue: 'Privacy Policy' }) %></a>
+                <a href="#" class="text-white" data-i18n="footer.termsOfService"><%= t('footer.termsOfService', { defaultValue: 'Terms of Service' }) %></a>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col text-center">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
