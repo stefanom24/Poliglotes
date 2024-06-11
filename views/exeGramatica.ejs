@@ -1,30 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/jquery/jquery-jvectormap-2.0.5/jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            color: #333;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
         .grammar-container {
             margin-top: 100px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
 
         .feedback {
             display: none;
+            margin-top: 10px;
+            transition: opacity 0.5s ease-in-out;
         }
 
-        .correct {
+        .feedback.correct {
             color: green;
         }
 
-        .incorrect {
+        .feedback.incorrect {
             color: red;
         }
 
         .score {
             font-size: 1.5rem;
             font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .question {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .question-container {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .question-container img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .btn-hover {
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            background-color: #0056b3 !important;
+            color: white !important;
+        }
+
+        .progress-bar-container {
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            background-color: #28a745;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+        .reward {
+            font-size: 1.2rem;
+            color: #28a745;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -33,38 +123,73 @@
         <%- include('partials/navbar') %>
     </header>
     <main class="container grammar-container">
-        <h1 class="text-center">Exercícios de Gramática</h1>
-        <div id="grammar-quiz" class="mt-4">
-            <!-- Exercícios de gramática serão inseridos aqui -->
+        <div class="card">
+            <div class="card-header">
+                Exercícios de Gramática
+            </div>
+            <section class="container-fluid gradient-bg">
+                <div class="row text-center justify-content-center">
+                    <div class="col-md-4">
+                        <figure class="figure">
+                            <img src="/images/blackboard.gif" class="figure-img img-fluid rounded mx-auto d-block" style="width: 50%;" alt="Exercícios de Gramática">
+                        </figure>
+                    </div>
+                </div>
+            </section>
+            <div class="card-body">
+                <div id="timer" class="text-center timer">Tempo: 60 segundos</div>
+                <div id="grammar-quiz" class="mt-4">
+                    <!-- Exercícios de gramática serão inseridos aqui -->
+                </div>
+                <div id="grammar-results" class="mt-4"></div>
+                <div class="score mt-4">Pontuação: <span id="score">0</span></div>
+                <div id="reward" class="reward text-center mt-4 hidden">Parabéns! Continue assim!</div>
+                <div class="progress-bar-container">
+                    <div class="progress">
+                        <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button id="check-grammar-answers" class="btn btn-success mt-4">Verificar Respostas</button>
-        <div id="grammar-results" class="mt-4"></div>
-        <div class="score mt-4">Pontuação: <span id="score">0</span></div>
     </main>
     <footer>
-        <div class="container p-4">
+        <div class="container text-center">
             <p>&copy; 2024 Aprenda Vocabulário. Todos os direitos reservados.</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script>
         const grammarExercises = [
             {
                 question: "Qual é a forma correta do verbo 'ir' no presente do indicativo para a terceira pessoa do singular?",
                 options: ["vai", "vão", "vamos", "vaiam"],
-                correct: "vai"
+                correct: "vai",
+                image: "/images/go-kart.gif"
             },
             {
                 question: "Escolha a frase correta:",
-                options: ["Eu vou ir para casa.", "Eu vou a casa.", "Eu vou a casa.", "Eu vou casa."],
-                correct: "Eu vou a casa."
+                options: ["Eu vou ir para casa.", "Eu vou à casa.", "Eu vou a casa.", "Eu vou casa."],
+                correct: "Eu vou à casa.",
+                image: "/images/home.gif"
             },
             {
                 question: "Complete a frase: 'Ele ____ ao cinema ontem.'",
                 options: ["foi", "vai", "irá", "iria"],
-                correct: "foi"
+                correct: "foi",
+                image: "/images/recommendation.gif"
+            },
+            {
+                question: "Qual é o plural de 'cão'?",
+                options: ["cães", "cãos", "cãeses", "cões"],
+                correct: "cães",
+                image: "/images/dog.gif"
+            },
+            {
+                question: "Qual destas palavras está escrita corretamente?",
+                options: ["impressão", "impreção", "impreção", "impressao"],
+                correct: "impressão",
+                image: "/images/emotions.gif"
             }
         ];
 
@@ -82,11 +207,21 @@
 
             exercises.forEach((exercise, index) => {
                 const questionDiv = document.createElement('div');
-                questionDiv.classList.add('mb-3');
+                questionDiv.classList.add('question-container');
+
+                if (exercise.image) {
+                    const image = document.createElement('img');
+                    image.src = exercise.image;
+                    questionDiv.appendChild(image);
+                }
+
+                const questionContent = document.createElement('div');
+                questionContent.style.flex = "1";
 
                 const question = document.createElement('p');
+                question.classList.add('question');
                 question.textContent = exercise.question;
-                questionDiv.appendChild(question);
+                questionContent.appendChild(question);
 
                 const answers = shuffle(exercise.options);
                 answers.forEach(answer => {
@@ -98,6 +233,7 @@
                     input.name = `grammar-question-${index}`;
                     input.value = answer;
                     input.classList.add('form-check-input');
+                    input.addEventListener('change', () => checkAnswer(input, exercise.correct, index));
 
                     label.appendChild(input);
                     label.append(answer);
@@ -106,40 +242,52 @@
                     div.classList.add('form-check');
                     div.appendChild(label);
 
-                    questionDiv.appendChild(div);
+                    questionContent.appendChild(div);
                 });
 
+                questionDiv.appendChild(questionContent);
                 quizContainer.appendChild(questionDiv);
             });
         }
 
-        document.getElementById('check-grammar-answers').addEventListener('click', () => {
-            const resultsContainer = document.getElementById('grammar-results');
-            const scoreContainer = document.getElementById('score');
-            resultsContainer.innerHTML = '';
-            let correct = 0;
-            const questions = document.querySelectorAll('#grammar-quiz > div');
+        function checkAnswer(input, correctAnswer, index) {
+            const feedback = document.createElement('p');
+            feedback.classList.add('feedback');
+            if (input.value === correctAnswer) {
+                feedback.classList.add('correct');
+                feedback.textContent = "Correto!";
+                showReward();
+            } else {
+                feedback.classList.add('incorrect');
+                feedback.textContent = `Incorreto! A resposta correta é: ${correctAnswer}`;
+            }
+            input.closest('.question-container').appendChild(feedback);
+            feedback.style.display = 'block';
+        }
 
-            questions.forEach((questionDiv, index) => {
-                const selectedAnswer = questionDiv.querySelector('input[name="grammar-question-' + index + '"]:checked');
-                const feedback = document.createElement('p');
-                feedback.classList.add('feedback');
-                if (selectedAnswer && selectedAnswer.value === grammarExercises[index].correct) {
-                    correct++;
-                    feedback.classList.add('correct');
-                    feedback.textContent = "Correto!";
+        function showReward() {
+            const reward = document.getElementById('reward');
+            reward.classList.remove('hidden');
+            setTimeout(() => reward.classList.add('hidden'), 2000);
+        }
+
+        function startTimer() {
+            let timeLeft = 60;
+            const timer = document.getElementById('timer');
+            const timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert('O tempo acabou!');
                 } else {
-                    feedback.classList.add('incorrect');
-                    feedback.textContent = `Incorreto! A resposta correta é: ${grammarExercises[index].correct}`;
+                    timer.textContent = `Tempo: ${timeLeft--} segundos`;
                 }
-                questionDiv.appendChild(feedback);
-                feedback.style.display = 'block';
-            });
+            }, 1000);
+        }
 
-            scoreContainer.textContent = correct;
+        document.addEventListener('DOMContentLoaded', () => {
+            generateGrammarQuiz(grammarExercises);
+            startTimer();
         });
-
-        generateGrammarQuiz(grammarExercises);
     </script>
 </body>
 </html>

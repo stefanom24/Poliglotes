@@ -1,124 +1,150 @@
 const express = require('express');
-const path = require('path');  // Importação do módulo path
+const path = require('path');
+const fs = require('fs');
 const bodyParser = require('body-parser');
+const i18next = require('i18next');
+const i18nextMiddleware = require('i18next-http-middleware');
+const Backend = require('i18next-fs-backend');
+
 const app = express();
 
 app.use(bodyParser.json());
-
-// Deixando o node/express utilizar e ler arquivos html
 app.use(express.urlencoded({ extended: true }));
-
-// Definindo pasta de arquivos estáticos
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+i18next
+  .use(Backend)
+  .use(i18nextMiddleware.LanguageDetector)
+  .init({
+      backend: {
+          loadPath: path.join(__dirname, 'public/languages/{{lng}}/en.json')
+      },
+      fallbackLng: 'en',
+      preload: ['en', 'es', 'fr', 'pt'], // Preload all languages
+      saveMissing: true
+  });
+
+app.use(i18nextMiddleware.handle(i18next));
+
+app.use((req, res, next) => {
+    res.locals.t = req.t;
+    res.locals.lng = req.language;
+    next();
+});
 
 // Roteando pagina inicial
 app.get('/', (req, res) => {
-    res.render('index');
+  res.render('index', { lng: req.language });
 });
 
 // Roteando pagina dashboard
 app.get('/dashboard', (req, res) => {
-    res.render('dashboard');
+  res.render('dashboard', { lng: req.language });
 });
 
-// Recebendo dados
-app.post('', (req, res) => {
-    //Fazer toda logica de escrever para json.
-});
 
 // Roteando pagina exercicios conversacao
 app.get('/exeConversa', (req, res) => {
-    res.render('exeConversa');
+  res.render('exeConversa', { lng: req.language });
 });
 
 // Roteando pagina exercicios gramatica
 app.get('/exeGramatica', (req, res) => {
-    res.render('exeGramatica');
+  res.render('exeGramatica', { lng: req.language });
 });
 
 // Roteando pagina exercicios vocabulario
 app.get('/exeVocab', (req, res) => {
-    res.render('exeVocab');
+  res.render('exeVocab', { lng: req.language });
 });
 
+// Roteando pagina signup
 app.get('/signup', (req, res) => {
-    res.render('signup');
+  res.render('signup', { lng: req.language });
 });
 
 app.post('/signup', (req, res) => {
-    const { username, email, password, plan } = req.body;
-    
-    // Add logic to create a user account
-    // For example, save the user details to a database
-    // Here, we'll just simulate success or failure
+  const { username, email, password, plan } = req.body;
+  // Add logic to create a user account
+  // For example, save the user details to a database
+  // Here, we'll just simulate success or failure
+  const success = true; // Change this based on actual user creation logic
 
-    // Simulating user creation
-    const success = true; // Change this based on actual user creation logic
-
-    if (success) {
-        res.json({ success: true });
-    } else {
-        res.json({ success: false, message: 'Unable to create account. Please try again.' });
-    }
+  if (success) {
+    res.json({ success: true });
+  } else {
+    res.json({ success: false, message: 'Unable to create account. Please try again.' });
+  }
 });
-
 
 // Recebendo dados do Login
 app.post('/login', (req, res) => {
-    let email = req.body.loginEmail;
-    let password = req.body.loginPassword;
-    
-    let user = {
-        "email": email,
-        "password": password
-    }
-    gravar(user, () => { // Passa a função `ler` como callback para ser chamada após `gravar`
-        ler(() => {
-            if(user.email == "stefanom24@gmail.com"){
-                console.log('Login feito com sucesso!');
-                res.redirect('/');
-            }
-        }) 
+  let email = req.body.loginEmail;
+  let password = req.body.loginPassword;
+
+  let user = {
+    "email": email,
+    "password": password
+  };
+
+  gravar(user, () => { 
+    ler(() => {
+      if (user.email == "stefanom24@gmail.com") {
+        console.log('Login feito com sucesso!');
+        res.redirect('/');
+      }
     });
+  });
+});
+
+// Endpoint to get translations
+app.get('/languages/:lang', (req, res) => {
+  const lang = req.params.lang;
+  const filePath = path.join(__dirname, `public/languages/${lang}.json`);
+
+  fs.readFile(filePath, 'utf-8', (err, data) => {
+    if (err) {
+      return res.status(404).send('Language file not found');
+    }
+    res.json(JSON.parse(data));
+  });
 });
 
 app.listen(3000, () => {
-    console.log('Servidor iniciado.');
+  console.log('Servidor iniciado.');
 });
 
-function gravar(user, callback){
-    const fs = require('fs');
-    let loginFile;
-    try {
-        loginFile = require('./login.json');
-    } catch (error) {
-        loginFile = { users: [] }; // Cria um novo objeto se o arquivo não existir
+function gravar(user, callback) {
+  let loginFile;
+  try {
+    loginFile = require('./login.json');
+  } catch (error) {
+    loginFile = { users: [] }; // Cria um novo objeto se o arquivo não existir
+  }
+  loginFile.users.push(user);
+  fs.writeFile('login.json', JSON.stringify(loginFile), err => {
+    if (err) {
+      console.error(err);
+      return;
     }
-    loginFile.users.push(user);
-    fs.writeFile('login.json', JSON.stringify(loginFile), err => {
-        if (err) {
-            console.error(err);
-            return;
-        }
-        console.log('Gravado');
-        callback(); // Chama `ler` somente após o arquivo ser gravado
-    });
-};
+    console.log('Gravado');
+    callback(); // Chama `ler` somente após o arquivo ser gravado
+  });
+}
 
-function ler(callback){
-    const fs = require('fs');
-    fs.readFile('./login.json', 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-            return;
-        }
-        const login = JSON.parse(data);
-        // Verifica se o caminho desejado existe antes de tentar acessá-lo
-        if (login.users && login.users.length > 1) {
-            console.log(login.users[1].email); // Supondo que você quer acessar o email do segundo usuário
-        }  
-    });
+function ler(callback) {
+  fs.readFile('./login.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    const login = JSON.parse(data);
+    if (login.users && login.users.length > 1) {
+      console.log(login.users[1].email); // Supondo que você quer acessar o email do segundo usuário
+    }
     callback();
-};
+  });
+}
