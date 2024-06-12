@@ -1,81 +1,82 @@
 {
-  "nav": {
-    "brand": "Poliglotês",
-    "home": "Início",
-    "dashboard": "Painel de controle",
-    "exercises": "Exercícios",
-    "vocabulary": "Vocabulário",
-    "grammar": "Gramática",
-    "conversation": "Conversa",
-    "language": "Língua",
-    "language.english": "Inglês",
-    "language.spanish": "Espanhol",
-    "language.french": "Francês",
-    "login": "Iniciar sessão",
-    "signup": "Registar-se",
-    "notifications": {
-      "title": "Notificações",
-      "item1": "Notificação 1",
-      "item2": "Notificação 2",
-      "item3": "Notificação 3",
-      "close": "Close (Fechar)"
-    }
-  },
-  "page": {
-    "title": "Poliglotês"
-  },
-  "main": {
-    "videoOverlay": {
-      "ticket": "O seu bilhete para o mundo! 🌎",
-      "join": "Junte-se a nós para explorar e aprender novos idiomas.",
-      "getStarted": "Iniciar"
-    },
-    "features": {
-      "learn": {
-        "title": "Aprenda",
-        "description": "Aprenda um novo idioma com o Poliglotês. Oferecemos uma ampla gama de idiomas para escolher."
-      },
-      "travel": {
-        "title": "Viagens",
-        "description": "Viaje pelo mundo com a Poliglotês. Oferecemos uma ampla gama de destinos para escolher."
-      },
-      "explore": {
-        "title": "Explore",
-        "description": "Explore o mundo com a Poliglotês. Oferecemos uma ampla gama de experiências para escolher."
-      }
-    },
-    "testimonials": {
-      "title": "O que dizem os nossos utilizadores",
-      "userA": "\"A Poliglotês transformou completamente a minha experiência de aprendizagem de línguas. Altamente recomendado!\"",
-      "userB": "\"As dicas de viagem e os recursos linguísticos são excelentes. Sinto-me mais confiante em viajar para o exterior.\"",
-      "userC": "\"Uma plataforma fantástica para quem quer aprender um novo idioma ou melhorar suas habilidades.\""
-    },
-    "map": {
-      "globalVisitors": "Visitantes globais",
-      "lastUpdated": "Última atualização: <g id=\"11\"/> dias atrás",
-      "us": "Estados Unidos",
-      "brazil": "Brasil",
-      "russia": "Rússia",
-      "australia": "Austrália"
-    },
-    "aboutUs": {
-      "title": "Quem somos",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae nunc nec nisl aliquet lacinia. Nulla facilisi. Nullam auctor, nisl id lacinia tincidunt, nunc nunc fringilla nunc, id tincidunt nunc nunc ac nunc. Nulla facilisi. Sed auctor, nunc id lacinia tincidunt, nunc nunc fringilla nunc, id tincidunt nunc nunc ac nunc."
-    },
-    "contactUs": {
-      "title": "Contacte-nos",
-      "email": "E-mail: info@poliglotes.com",
-      "phone": "Telefone: +1 123 456 7890"
-    },
-    "newsletter": {
-      "title": "Fique atualizado",
-      "description": "Subscreva a nossa newsletter para receber as últimas atualizações e notícias.",
-      "subscribe": "Subscrever"
-    }
-  },
-  "footer": {
-    "copyright": "© 2024 Poliglotês. Todos os direitos reservados.",
-    "privacyPolicy": "Política de Privacidade",
-    "termsOfService": "Termos de serviço"
-  }
+  "footer.copyright": "",
+  "footer.privacyPolicy": "",
+  "footer.termsOfService": "",
+  "main.videoOverlay.ticket": "",
+  "main.videoOverlay.join": "",
+  "main.videoOverlay.getStarted": "",
+  "main.features.learn.title": "",
+  "main.features.learn.description": "",
+  "main.features.travel.title": "",
+  "main.features.travel.description": "",
+  "main.features.explore.title": "",
+  "main.features.explore.description": "",
+  "main.testimonials.title": "",
+  "main.testimonials.userA": "",
+  "main.testimonials.userB": "",
+  "main.testimonials.userC": "",
+  "main.map.globalVisitors": "",
+  "main.map.lastUpdated": "",
+  "main.map.us": "",
+  "main.map.brazil": "",
+  "main.map.russia": "",
+  "main.map.australia": "",
+  "main.aboutUs.title": "",
+  "main.aboutUs.description": "",
+  "main.contactUs.title": "",
+  "main.contactUs.email": "",
+  "main.contactUs.phone": "",
+  "main.newsletter.title": "",
+  "main.newsletter.description": "",
+  "main.newsletter.subscribe": "",
+  "nav.brand": "",
+  "nav.home": "",
+  "nav.dashboard": "",
+  "nav.exercises": "",
+  "nav.vocabulary": "",
+  "nav.grammar": "",
+  "nav.conversation": "",
+  "nav.language": "",
+  "nav.language.english": "",
+  "nav.language.spanish": "",
+  "nav.language.french": "",
+  "nav.language.portuguese": "",
+  "nav.login": "",
+  "nav.signup": "",
+  "nav.notifications.title": "",
+  "nav.notifications.item1": "",
+  "nav.notifications.item2": "",
+  "nav.notifications.item3": "",
+  "nav.notifications.close": "",
+  "hero.title": "",
+  "hero.subtitle": "",
+  "hero.button": "",
+  "pricing.title": "",
+  "pricing.subtitle": "",
+  "pricing.free.title": "",
+  "pricing.free.price": "",
+  "pricing.free.feature1": "",
+  "pricing.free.feature2": "",
+  "pricing.free.feature3": "",
+  "signup.button": "",
+  "pricing.standard.title": "",
+  "pricing.standard.price": "",
+  "pricing.standard.feature1": "",
+  "pricing.standard.feature2": "",
+  "pricing.standard.feature3": "",
+  "pricing.premium.title": "",
+  "pricing.premium.price": "",
+  "pricing.premium.feature1": "",
+  "pricing.premium.feature2": "",
+  "pricing.premium.feature3": "",
+  "signup.title": "",
+  "signup.usernameLabel": "",
+  "signup.emailLabel": "",
+  "signup.passwordLabel": "",
+  "signup.confirmPasswordLabel": "",
+  "signup.planLabel": "",
+  "signup.planFree": "",
+  "signup.planStandard": "",
+  "signup.planPremium": "",
+  "signup.submitButton": ""
 }

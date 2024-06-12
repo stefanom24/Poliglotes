@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Sign Up - Poliglotês</title>
+    <title><%= t('page.title.signup', { defaultValue: 'Sign Up - Poliglotês' }) %></title>
     <style>
         .hero-section {
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
@@ -36,33 +36,33 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="container">
-                <h1 class="display-4">Join Poliglotês Today!</h1>
-                <p class="lead">Discover the world through language. Choose a subscription that suits you and start your journey.</p>
-                <a href="#pricing" class="btn btn-primary btn-lg">View Pricing</a>
+                <h1 class="display-4" data-i18n="hero.title"><%= t('hero.title', { defaultValue: 'Join Poliglotês Today!' }) %></h1>
+                <p class="lead" data-i18n="hero.subtitle"><%= t('hero.subtitle', { defaultValue: 'Discover the world through language. Choose a subscription that suits you and start your journey.' }) %></p>
+                <a href="#pricing" class="btn btn-primary btn-lg" data-i18n="hero.button"><%= t('hero.button', { defaultValue: 'View Pricing' }) %></a>
             </div>
         </section>
 
         <!-- Pricing Section -->
         <section id="pricing" class="pricing-section container">
             <div class="text-center mb-5">
-                <h2>Our Subscription Plans</h2>
-                <p class="lead">Choose a plan that fits your learning goals and budget.</p>
+                <h2 data-i18n="pricing.title"><%= t('pricing.title', { defaultValue: 'Our Subscription Plans' }) %></h2>
+                <p class="lead" data-i18n="pricing.subtitle"><%= t('pricing.subtitle', { defaultValue: 'Choose a plan that fits your learning goals and budget.' }) %></p>
             </div>
             <div class="row">
                 <!-- Free Plan -->
                 <div class="col-md-4">
                     <div class="card card-pricing text-center">
                         <div class="card-header bg-primary text-white">
-                            <h3>Free</h3>
-                            <p class="lead">$0 / month</p>
+                            <h3 data-i18n="pricing.free.title"><%= t('pricing.free.title', { defaultValue: 'Free' }) %></h3>
+                            <p class="lead" data-i18n="pricing.free.price"><%= t('pricing.free.price', { defaultValue: '$0 / month' }) %></p>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled mb-4">
-                                <li><i class="fas fa-check"></i> Access to basic courses</li>
-                                <li><i class="fas fa-check"></i> Community support</li>
-                                <li><i class="fas fa-check"></i> Limited exercises</li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="pricing.free.feature1"><%= t('pricing.free.feature1', { defaultValue: 'Access to basic courses' }) %></span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="pricing.free.feature2"><%= t('pricing.free.feature2', { defaultValue: 'Community support' }) %></span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="pricing.free.feature3"><%= t('pricing.free.feature3', { defaultValue: 'Limited exercises' }) %></span></li>
                             </ul>
-                            <a href="#signup" class="btn btn-outline-primary">Sign Up</a>
+                            <a href="#signup" class="btn btn-outline-primary" data-i18n="signup.button"><%= t('signup.button', { defaultValue: 'Sign Up' }) %></a>
                         </div>
                     </div>
                 </div>
@@ -70,16 +70,16 @@
                 <div class="col-md-4">
                     <div class="card card-pricing text-center">
                         <div class="card-header bg-success text-white">
-                            <h3>Standard</h3>
-                            <p class="lead">$10 / month</p>
+                            <h3 data-i18n="pricing.standard.title"><%= t('pricing.standard.title', { defaultValue: 'Standard' }) %></h3>
+                            <p class="lead" data-i18n="pricing.standard.price"><%= t('pricing.standard.price', { defaultValue: '$10 / month' }) %></p>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled mb-4">
-                                <li><i class="fas fa-check"></i> Access to all courses</li>
-                                <li><i class="fas fa-check"></i> Priority support</li>
-                                <li><i class="fas fa-check"></i> Unlimited exercises</li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="pricing.standard.feature1"><%= t('pricing.standard.feature1', { defaultValue: 'Access to all courses' }) %></span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="pricing.standard.feature2"><%= t('pricing.standard.feature2', { defaultValue: 'Priority support' }) %></span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="pricing.standard.feature3"><%= t('pricing.standard.feature3', { defaultValue: 'Unlimited exercises' }) %></span></li>
                             </ul>
-                            <a href="#signup" class="btn btn-outline-success">Sign Up</a>
+                            <a href="#signup" class="btn btn-outline-success" data-i18n="signup.button"><%= t('signup.button', { defaultValue: 'Sign Up' }) %></a>
                         </div>
                     </div>
                 </div>
@@ -87,16 +87,16 @@
                 <div class="col-md-4">
                     <div class="card card-pricing text-center">
                         <div class="card-header bg-warning text-white">
-                            <h3>Premium</h3>
-                            <p class="lead">$20 / month</p>
+                            <h3 data-i18n="pricing.premium.title"><%= t('pricing.premium.title', { defaultValue: 'Premium' }) %></h3>
+                            <p class="lead" data-i18n="pricing.premium.price"><%= t('pricing.premium.price', { defaultValue: '$20 / month' }) %></p>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled mb-4">
-                                <li><i class="fas fa-check"></i> Access to all courses</li>
-                                <li><i class="fas fa-check"></i> 1-on-1 coaching</li>
-                                <li><i class="fas fa-check"></i> Certification</li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="pricing.premium.feature1"><%= t('pricing.premium.feature1', { defaultValue: 'Access to all courses' }) %></span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="pricing.premium.feature2"><%= t('pricing.premium.feature2', { defaultValue: '1-on-1 coaching' }) %></span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="pricing.premium.feature3"><%= t('pricing.premium.feature3', { defaultValue: 'Certification' }) %></span></li>
                             </ul>
-                            <a href="#signup" class="btn btn-outline-warning">Sign Up</a>
+                            <a href="#signup" class="btn btn-outline-warning" data-i18n="signup.button"><%= t('signup.button', { defaultValue: 'Sign Up' }) %></a>
                         </div>
                     </div>
                 </div>
@@ -108,33 +108,33 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
-                        <h2 class="text-center mb-4">Create Your Account</h2>
+                        <h2 class="text-center mb-4" data-i18n="signup.title"><%= t('signup.title', { defaultValue: 'Create Your Account' }) %></h2>
                         <form id="signupForm">
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
+                                <label for="username" class="form-label" data-i18n="signup.usernameLabel"><%= t('signup.usernameLabel', { defaultValue: 'Username' }) %></label>
                                 <input type="text" class="form-control" id="username" required>
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="email" class="form-label" data-i18n="signup.emailLabel"><%= t('signup.emailLabel', { defaultValue: 'Email' }) %></label>
                                 <input type="email" class="form-control" id="email" required>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
+                                <label for="password" class="form-label" data-i18n="signup.passwordLabel"><%= t('signup.passwordLabel', { defaultValue: 'Password' }) %></label>
                                 <input type="password" class="form-control" id="password" required>
                             </div>
                             <div class="mb-3">
-                                <label for="confirm-password" class="form-label">Confirm Password</label>
+                                <label for="confirm-password" class="form-label" data-i18n="signup.confirmPasswordLabel"><%= t('signup.confirmPasswordLabel', { defaultValue: 'Confirm Password' }) %></label>
                                 <input type="password" class="form-control" id="confirm-password" required>
                             </div>
                             <div class="mb-3">
-                                <label for="plan" class="form-label">Choose Plan</label>
+                                <label for="plan" class="form-label" data-i18n="signup.planLabel"><%= t('signup.planLabel', { defaultValue: 'Choose Plan' }) %></label>
                                 <select class="form-select" id="plan" required>
-                                    <option value="free">Free - $0/month</option>
-                                    <option value="standard">Standard - $10/month</option>
-                                    <option value="premium">Premium - $20/month</option>
+                                    <option value="free" data-i18n="signup.planFree"><%= t('signup.planFree', { defaultValue: 'Free - $0/month' }) %></option>
+                                    <option value="standard" data-i18n="signup.planStandard"><%= t('signup.planStandard', { defaultValue: 'Standard - $10/month' }) %></option>
+                                    <option value="premium" data-i18n="signup.planPremium"><%= t('signup.planPremium', { defaultValue: 'Premium - $20/month' }) %></option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                            <button type="submit" class="btn btn-primary w-100" data-i18n="signup.submitButton"><%= t('signup.submitButton', { defaultValue: 'Sign Up' }) %></button>
                         </form>
                         <div id="responseMessage" class="mt-3"></div>
                     </div>
@@ -146,11 +146,11 @@
         <div class="container p-4">
             <div class="row">
                 <div class="col-md-6">
-                    <p>&copy; 2024 Poliglotês. All rights reserved.</p>
+                    <p data-i18n="footer.copyright"><%= t('footer.copyright', { defaultValue: '&copy; 2024 Poliglotês. All rights reserved.' }) %></p>
                 </div>
                 <div class="col-md-6 text-end">
-                    <a href="#" class="text-white me-2">Privacy Policy</a>
-                    <a href="#" class="text-white">Terms of Service</a>
+                    <a href="#" class="text-white me-2" data-i18n="footer.privacyPolicy"><%= t('footer.privacyPolicy', { defaultValue: 'Privacy Policy' }) %></a>
+                    <a href="#" class="text-white" data-i18n="footer.termsOfService"><%= t('footer.termsOfService', { defaultValue: 'Terms of Service' }) %></a>
                 </div>
             </div>
             <div class="row mt-3">
@@ -164,47 +164,6 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-    <script>
-        document.getElementById('signupForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-            const plan = document.getElementById('plan').value;
-            
-            if (password !== confirmPassword) {
-                document.getElementById('responseMessage').innerHTML = '<div class="alert alert-danger">Passwords do not match.</div>';
-                return;
-            }
-
-            const requestData = {
-                username: username,
-                email: email,
-                password: password,
-                plan: plan
-            };
-
-            fetch('/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    document.getElementById('responseMessage').innerHTML = '<div class="alert alert-success">Account created successfully!</div>';
-                } else {
-                    document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
-                }
-            })
-            .catch(error => {
-                document.getElementById('responseMessage').innerHTML = '<div class="alert alert-danger">An error occurred. Please try again.</div>';
-            });
-        });
-    </script>
+    <script src="/main.js"></script>
 </body>
 </html>

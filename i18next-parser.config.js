@@ -10,7 +10,8 @@ const config = {
         hbs: ['HandlebarsLexer'],
         handlebars: ['HandlebarsLexer'],
         html: ['HTMLLexer'],
-        ejs: ['HTMLLexer'], // Use HTMLLexer for EJS files
+        ejs: ['JavascriptLexer'],
+        functions: ['t'],
         js: ['JavascriptLexer'],
         jsx: ['JsxLexer'],
         mjs: ['JavascriptLexer'],
@@ -26,10 +27,10 @@ const config = {
         '!node_modules/**',
         '!C:/Config.Msi/**'
     ],
-    output: 'public/languages/$LOCALE.json',
+    output: 'public/languages/$LOCALE/$NAMESPACE.json', // Adjusted to output per language directory
     sort: false,
     skipDefaultValues: false,
-    useKeysAsDefaultValue: false,
+    useKeysAsDefaultValue: true,
     verbose: true,
 };
 

@@ -22,7 +22,9 @@
       }
     },
     "page": {
-        "title": "Poliglotês"
+        "title": {
+            "index": "Poliglotês"
+        }
     },
     "main": {
         "videoOverlay": {

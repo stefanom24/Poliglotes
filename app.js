@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const i18next = require('i18next');
 const i18nextMiddleware = require('i18next-http-middleware');
 const Backend = require('i18next-fs-backend');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -15,24 +16,38 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(cookieParser());
+
 i18next
   .use(Backend)
   .use(i18nextMiddleware.LanguageDetector)
   .init({
-      backend: {
-          loadPath: path.join(__dirname, 'public/languages/{{lng}}/en.json')
-      },
-      fallbackLng: 'en',
-      preload: ['en', 'es', 'fr', 'pt'], // Preload all languages
-      saveMissing: true
+    backend: {
+      loadPath: path.join(__dirname, 'public/languages/{{lng}}/translation.json'), // Corrected path
+    },
+    fallbackLng: 'en',
+    preload: ['en', 'es', 'fr', 'pt'], // Preload all languages
+    saveMissing: true,
+    keySeparator: false, // To use keys with dots freely
+    interpolation: {
+      escapeValue: false, // Not needed for node
+    },
   });
 
 app.use(i18nextMiddleware.handle(i18next));
 
 app.use((req, res, next) => {
-    res.locals.t = req.t;
-    res.locals.lng = req.language;
-    next();
+  res.locals.t = req.t;
+  res.locals.lng = req.language;
+  next();
+});
+
+app.get('/change-lang', (req, res) => {
+  let lang = req.query.lang;
+  if (lang) {
+    req.i18n.changeLanguage(lang);
+  }
+  res.redirect('back');
 });
 
 // Roteando pagina inicial
@@ -103,7 +118,7 @@ app.post('/login', (req, res) => {
 // Endpoint to get translations
 app.get('/languages/:lang', (req, res) => {
   const lang = req.params.lang;
-  const filePath = path.join(__dirname, `public/languages/${lang}.json`);
+  const filePath = path.join(__dirname, `public/languages/${lang}/translation.json`);
 
   fs.readFile(filePath, 'utf-8', (err, data) => {
     if (err) {
