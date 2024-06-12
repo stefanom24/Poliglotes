@@ -153,7 +153,7 @@
                         <div class="d-flex gap-2 pt-4">
                             <button type="button" class="btn profile-btn btn-sm w-50"><i class="bx bx-user me-1"></i> Perfil</button>
                             <button type="button" class="btn contact-btn btn-sm w-50"><i class="bx bx-message-square-dots me-1"></i> Contato</button>
-                            <button type="button" class="btn video-call-btn btn-sm w-100 mt-2" data-bs-toggle="modal" data-bs-target="#videoCallModal"><i class="bx bx-video me-1"></i> Chamada em Vídeo</button>
+                            <button type="button" class="btn video-call-btn btn-sm w-100 mt-2" id="chamada-em-video" data-bs-toggle="modal" data-bs-target="#videoCallModal"><i class="bx bx-video me-1"></i> Chamada em Vídeo</button>
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                         <div class="d-flex gap-2 pt-4">
                             <button type="button" class="btn profile-btn btn-sm w-50"><i class="bx bx-user me-1"></i> Perfil</button>
                             <button type="button" class="btn contact-btn btn-sm w-50"><i class="bx bx-message-square-dots me-1"></i> Contato</button>
-                            <button type="button" class="btn video-call-btn btn-sm w-100 mt-2" data-bs-toggle="modal" data-bs-target="#videoCallModal"><i class="bx bx-video me-1"></i> Chamada em Vídeo</button>
+                            <button type="button" class="btn video-call-btn btn-sm w-100 mt-2" id="chamada-em-video" data-bs-toggle="modal" data-bs-target="#videoCallModal"><i class="bx bx-video me-1"></i> Chamada em Vídeo</button>
                         </div>
                     </div>
                 </div>
@@ -254,7 +254,7 @@
                         <div class="d-flex gap-2 pt-4">
                             <button type="button" class="btn profile-btn btn-sm w-50"><i class="bx bx-user me-1"></i> Perfil</button>
                             <button type="button" class="btn contact-btn btn-sm w-50"><i class="bx bx-message-square-dots me-1"></i> Contato</button>
-                            <button type="button" class="btn video-call-btn btn-sm w-100 mt-2" data-bs-toggle="modal" data-bs-target="#videoCallModal"><i class="bx bx-video me-1"></i> Chamada em Vídeo</button>
+                            <button type="button" class="btn video-call-btn btn-sm w-100 mt-2" id="chamada-em-video" data-bs-toggle="modal" data-bs-target="#videoCallModal"><i class="bx bx-video me-1"></i> Chamada em Vídeo</button>
                         </div>
                     </div>
                 </div>
@@ -289,14 +289,17 @@
         </div>
     </footer>
     
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
     <script>
         $(document).ready(function() {
             $('#chamada-em-video').click(function() {
                 console.log('Chamada em Video button clicked');
-                $('#videoCallModal').modal('show');
+                $('#videoCallModal').modal('show'); 
             });
-    
+
             $('#start-call').click(function() {
                 console.log('Start Call button clicked');
                 const videoPlaceholder = document.getElementById('video-placeholder');
@@ -304,7 +307,5 @@
             });
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 </body>
 </html>
