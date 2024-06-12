@@ -1,97 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exercicios de Vocabulário</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            color: #333;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .vocab-container {
+            margin-top: 100px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .feedback {
+            display: none;
+            margin-top: 10px;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .feedback.correct {
+            color: green;
+        }
+
+        .feedback.incorrect {
+            color: red;
+        }
+
+        .score {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .question {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .question-container {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .question-container img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .btn-hover {
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            background-color: #0056b3 !important;
+            color: white !important;
+        }
+
+        .progress-bar-container {
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            background-color: #28a745;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+        .reward {
+            font-size: 1.2rem;
+            color: #28a745;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <header>
-    <%- include ('navbar'); -%>
+        <%- include('partials/navbar') %>
     </header>
-  <div class="container mt-4">
-    <h1 class="text-center">Exercícios de Vocabulário</h1>
-    <div id="quiz" class="mt-4">
-      <!-- Exercícios de múltipla escolha serão inseridos aqui -->
-    </div>
-    <button id="check-answers" class="btn btn-success mt-4">Verificar Respostas</button>
-    <div id="results" class="mt-4"></div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const vocab = [
-      { word: "Casa", meaning: "House" },
-      { word: "Cão", meaning: "Dog" },
-      { word: "Gato", meaning: "Cat" }
-    ];
+    <main class="container vocab-container">
+        <div class="card">
+            <div class="card-header">
+                Exercícios de Vocabulário
+            </div>
+            <div class="card-body">
+                <div id="timer" class="text-center timer">Tempo: 60 segundos</div>
+                <div id="quiz" class="mt-4">
+                    <!-- Exercícios de vocabulário serão inseridos aqui -->
+                </div>
+                <div id="results" class="mt-4"></div>
+                <div class="score mt-4">Pontuação: <span id="score">0</span></div>
+                <div id="reward" class="reward text-center mt-4 hidden">Parabéns! Continue assim!</div>
+                <div class="progress-bar-container">
+                    <div class="progress">
+                        <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <button id="check-answers" class="btn btn-success mt-4">Verificar Respostas</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2024 Aprenda Vocabulário. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script>
+        const vocab = [
+            { word: "Casa", meaning: "House" },
+            { word: "Cão", meaning: "Dog" },
+            { word: "Gato", meaning: "Cat" },
+            { word: "Livro", meaning: "Book" },
+            { word: "Caneta", meaning: "Pen" },
+            { word: "Mesa", meaning: "Table" },
+            { word: "Janela", meaning: "Window" },
+            { word: "Cadeira", meaning: "Chair" },
+            { word: "Porta", meaning: "Door" },
+            { word: "Carro", meaning: "Car" }
+        ];
 
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
-    }
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
 
-    function generateQuiz(vocab) {
-      const quizContainer = document.getElementById('quiz');
-      quizContainer.innerHTML = '';
-      const shuffledVocab = shuffle([...vocab]);
+        function generateQuiz(vocab) {
+            const quizContainer = document.getElementById('quiz');
+            quizContainer.innerHTML = '';
+            const shuffledVocab = shuffle([...vocab]);
 
-      shuffledVocab.forEach((item, index) => {
-        const questionDiv = document.createElement('div');
-        questionDiv.classList.add('mb-3');
+            shuffledVocab.forEach((item, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('question-container');
 
-        const question = document.createElement('p');
-        question.textContent = `Qual é o significado de "${item.word}"?`;
-        questionDiv.appendChild(question);
+                const question = document.createElement('p');
+                question.classList.add('question');
+                question.textContent = `Qual é o significado de "${item.word}"?`;
+                questionDiv.appendChild(question);
 
-        const answers = shuffle(vocab.map(v => v.meaning));
-        answers.forEach(answer => {
-          const label = document.createElement('label');
-          label.classList.add('form-check-label');
+                const answers = shuffle(vocab.map(v => v.meaning));
+                answers.forEach(answer => {
+                    const label = document.createElement('label');
+                    label.classList.add('form-check-label');
 
-          const input = document.createElement('input');
-          input.type = 'radio';
-          input.name = `question-${index}`;
-          input.value = answer;
-          input.classList.add('form-check-input');
+                    const input = document.createElement('input');
+                    input.type = 'radio';
+                    input.name = `question-${index}`;
+                    input.value = answer;
+                    input.classList.add('form-check-input');
 
-          label.appendChild(input);
-          label.append(answer);
+                    label.appendChild(input);
+                    label.append(answer);
 
-          const div = document.createElement('div');
-          div.classList.add('form-check');
-          div.appendChild(label);
+                    const div = document.createElement('div');
+                    div.classList.add('form-check');
+                    div.appendChild(label);
 
-          questionDiv.appendChild(div);
+                    questionDiv.appendChild(div);
+                });
+
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        document.getElementById('check-answers').addEventListener('click', () => {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+            let correct = 0;
+            const questions = document.querySelectorAll('#quiz > .question-container');
+
+            questions.forEach((questionDiv, index) => {
+                const selectedAnswer = questionDiv.querySelector('input[name="question-' + index + '"]:checked');
+                if (selectedAnswer && selectedAnswer.value === vocab[index].meaning) {
+                    correct++;
+                }
+            });
+
+            const score = document.createElement('p');
+            score.textContent = `Você acertou ${correct} de ${vocab.length} perguntas.`;
+            resultsContainer.appendChild(score);
+
+            // Atualiza a pontuação
+            document.getElementById('score').textContent = correct;
+
+            // Atualiza a barra de progresso
+            const progressBar = document.getElementById('progress-bar');
+            const percentage = (correct / vocab.length) * 100;
+            progressBar.style.width = `${percentage}%`;
+            progressBar.setAttribute('aria-valuenow', percentage);
+
+            // Exibe uma recompensa se todas as respostas estiverem corretas
+            if (correct === vocab.length) {
+                document.getElementById('reward').classList.remove('hidden');
+            }
         });
 
-        quizContainer.appendChild(questionDiv);
-      });
-    }
-
-    document.getElementById('check-answers').addEventListener('click', () => {
-      const resultsContainer = document.getElementById('results');
-      resultsContainer.innerHTML = '';
-      let correct = 0;
-      const questions = document.querySelectorAll('#quiz > div');
-
-      questions.forEach((questionDiv, index) => {
-        const selectedAnswer = questionDiv.querySelector('input[name="question-' + index + '"]:checked');
-        if (selectedAnswer && selectedAnswer.value === vocab[index].meaning) {
-          correct++;
+        function startTimer() {
+            let timeLeft = 60;
+            const timer = document.getElementById('timer');
+            const timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert('O tempo acabou!');
+                } else {
+                    timer.textContent = `Tempo: ${timeLeft--} segundos`;
+                }
+            }, 1000);
         }
-      });
 
-      const score = document.createElement('p');
-      score.textContent = `Você acertou ${correct} de ${vocab.length} perguntas.`;
-      resultsContainer.appendChild(score);
-    });
-
-    generateQuiz(vocab);
-  </script>
+        document.addEventListener('DOMContentLoaded', () => {
+            generateQuiz(vocab);
+            startTimer();
+        });
+    </script>
 </body>
 </html>
